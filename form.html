@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ML Detection Form - Alzheimer's Detection</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding-top: 20px;
+      }
+      .navbar {
+        margin-bottom: 30px;
+        background-color: #343a40;
+      }
+      .container {
+        max-width: 800px;
+      }
+      .card {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+      .card-header {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+      }
+      .form-section {
+        margin-bottom: 25px;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+      }
+      .section-title {
+        margin-bottom: 15px;
+        color: #343a40;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 10px;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+      .form-tooltip {
+        font-size: 0.85em;
+        color: #6c757d;
+        margin-top: 5px;
+      }
+      .required-field::after {
+        content: "*";
+        color: red;
+        margin-left: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="./dashboard.html"
+          >Alzheimer's Detection</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="./form.html">ML Detection</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./upload.html">Image Detection</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          Alzheimer's Detection Using Clinical Features
+        </div>
+        <div class="card-body">
+          <div class="features-info">
+            <h5>Instructions:</h5>
+            <p>
+              Enter the patient's clinical data below to predict Alzheimer's
+              status using machine learning.
+            </p>
+            <p>
+              All fields marked with <span class="text-danger">*</span> are
+              required for accurate predictions.
+            </p>
+          </div>
+
+          <form method="POST" action="./result.html">
+            <div class="form-section">
+              <h5 class="section-title">Demographic & Clinical Features</h5>
+
+              <!-- Manually created form fields based on the provided list -->
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="Age" class="required-field">Age</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="Age"
+                    name="Age"
+                    min="0"
+                    max="120"
+                    step="1"
+                    required
+                  />
+                  <div class="form-tooltip">Patient's age in years</div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="Gender" class="required-field">Gender</label>
+                  <select
+                    class="form-control"
+                    id="Gender"
+                    name="Gender"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">Female</option>
+                    <option value="1">Male</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="Ethnicity" class="required-field"
+                    >Ethnicity</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Ethnicity"
+                    name="Ethnicity"
+                    required
+                  />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="EducationLevel" class="required-field"
+                    >Education Level</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="EducationLevel"
+                    name="EducationLevel"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="BMI" class="required-field">BMI</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="BMI"
+                    name="BMI"
+                    required
+                  />
+                  <div class="form-tooltip">Body Mass Index (kg/m²)</div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="Smoking" class="required-field">Smoking</label>
+                  <select
+                    class="form-control"
+                    id="Smoking"
+                    name="Smoking"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+              </div>
+
+              <h5 class="section-title mt-4">Health & Lifestyle Scores</h5>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="AlcoholConsumption" class="required-field"
+                    >Alcohol Consumption</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="AlcoholConsumption"
+                    name="AlcoholConsumption"
+                    required
+                  />
+                  <div class="form-tooltip">Scale (0-70)</div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="PhysicalActivity" class="required-field"
+                    >Physical Activity</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="PhysicalActivity"
+                    name="PhysicalActivity"
+                    required
+                  />
+                  <div class="form-tooltip">Scale (0-70)</div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="DietQuality" class="required-field"
+                    >Diet Quality</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="DietQuality"
+                    name="DietQuality"
+                    required
+                  />
+                  <div class="form-tooltip">Scale (0-70)</div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="SleepQuality" class="required-field"
+                    >Sleep Quality</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="SleepQuality"
+                    name="SleepQuality"
+                    required
+                  />
+                  <div class="form-tooltip">Scale (0-70)</div>
+                </div>
+              </div>
+
+              <h5 class="section-title mt-4">Medical History</h5>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="FamilyHistoryAlzheimers" class="required-field"
+                    >Family History</label
+                  >
+                  <select
+                    class="form-control"
+                    id="FamilyHistoryAlzheimers"
+                    name="FamilyHistoryAlzheimers"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="CardiovascularDisease" class="required-field"
+                    >Cardiovascular Disease</label
+                  >
+                  <select
+                    class="form-control"
+                    id="CardiovascularDisease"
+                    name="CardiovascularDisease"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="Diabetes" class="required-field">Diabetes</label>
+                  <select
+                    class="form-control"
+                    id="Diabetes"
+                    name="Diabetes"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="Depression" class="required-field"
+                    >Depression</label
+                  >
+                  <select
+                    class="form-control"
+                    id="Depression"
+                    name="Depression"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="HeadInjury" class="required-field"
+                    >Head Injury</label
+                  >
+                  <select
+                    class="form-control"
+                    id="HeadInjury"
+                    name="HeadInjury"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="Hypertension" class="required-field"
+                    >Hypertension</label
+                  >
+                  <select
+                    class="form-control"
+                    id="Hypertension"
+                    name="Hypertension"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+              </div>
+
+              <h5 class="section-title mt-4">Blood Pressure & Cholesterol</h5>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="SystolicBP" class="required-field"
+                    >Systolic BP</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="SystolicBP"
+                    name="SystolicBP"
+                    required
+                  />
+                  <div class="form-tooltip">Systolic Blood Pressure (mmHg)</div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="DiastolicBP" class="required-field"
+                    >Diastolic BP</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="DiastolicBP"
+                    name="DiastolicBP"
+                    required
+                  />
+                  <div class="form-tooltip">
+                    Diastolic Blood Pressure (mmHg)
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="CholesterolTotal" class="required-field"
+                    >Total Cholesterol</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="CholesterolTotal"
+                    name="CholesterolTotal"
+                    required
+                  />
+                  <div class="form-tooltip">Total Cholesterol (mg/dL)</div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="CholesterolLDL" class="required-field"
+                    >LDL Cholesterol</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="CholesterolLDL"
+                    name="CholesterolLDL"
+                    required
+                  />
+                  <div class="form-tooltip">LDL Cholesterol (mg/dL)</div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="CholesterolHDL" class="required-field"
+                    >HDL Cholesterol</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="CholesterolHDL"
+                    name="CholesterolHDL"
+                    required
+                  />
+                  <div class="form-tooltip">HDL Cholesterol (mg/dL)</div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="CholesterolTriglycerides" class="required-field"
+                    >Triglycerides</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="CholesterolTriglycerides"
+                    name="CholesterolTriglycerides"
+                    required
+                  />
+                  <div class="form-tooltip">Triglycerides (mg/dL)</div>
+                </div>
+              </div>
+
+              <h5 class="section-title mt-4">
+                Cognitive & Functional Assessment
+              </h5>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="MMSE" class="required-field">MMSE</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="MMSE"
+                    name="MMSE"
+                    required
+                  />
+                  <div class="form-tooltip">Mini-Mental State Exam (0-30)</div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="FunctionalAssessment" class="required-field"
+                    >Functional Assessment</label
+                  >
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="FunctionalAssessment"
+                    name="FunctionalAssessment"
+                    required
+                  />
+                  <div class="form-tooltip">Scale (0-70)</div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="ADL" class="required-field">ADL</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    class="form-control"
+                    id="ADL"
+                    name="ADL"
+                    required
+                  />
+                  <div class="form-tooltip">
+                    Activities of Daily Living (0-6)
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="MemoryComplaints" class="required-field"
+                    >Memory Complaints</label
+                  >
+                  <select
+                    class="form-control"
+                    id="MemoryComplaints"
+                    name="MemoryComplaints"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="BehavioralProblems" class="required-field"
+                    >Behavioral Problems</label
+                  >
+                  <select
+                    class="form-control"
+                    id="BehavioralProblems"
+                    name="BehavioralProblems"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="Confusion" class="required-field"
+                    >Confusion</label
+                  >
+                  <select
+                    class="form-control"
+                    id="Confusion"
+                    name="Confusion"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="Disorientation" class="required-field"
+                    >Disorientation</label
+                  >
+                  <select
+                    class="form-control"
+                    id="Disorientation"
+                    name="Disorientation"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="PersonalityChanges" class="required-field"
+                    >Personality Changes</label
+                  >
+                  <select
+                    class="form-control"
+                    id="PersonalityChanges"
+                    name="PersonalityChanges"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="DifficultyCompletingTasks" class="required-field"
+                    >Difficulty Completing Tasks</label
+                  >
+                  <select
+                    class="form-control"
+                    id="DifficultyCompletingTasks"
+                    name="DifficultyCompletingTasks"
+                    required
+                  >
+                    <option value="">Select...</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="Forgetfulness" class="required-field"
+                  >Forgetfulness</label
+                >
+                <select
+                  class="form-control"
+                  id="Forgetfulness"
+                  name="Forgetfulness"
+                  required
+                >
+                  <option value="">Select...</option>
+                  <option value="0">No</option>
+                  <option value="1">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary btn-lg">
+                Analyze Data
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="text-center mb-4">
+        <a href="./dashboard.html" class="btn btn-secondary"
+          >Back to Dashboard</a
+        >
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

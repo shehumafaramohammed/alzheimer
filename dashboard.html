@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Alzheimer's Detection</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f8f9fa;
+        position: relative;
+        font-family: "Inter", sans-serif;
+      }
+      .video-background {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: -1;
+        background-color: #000;
+      }
+      .video-background video {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        transform: translateX(-50%) translateY(-50%);
+        opacity: 0.5;
+      }
+      .content-wrapper {
+        position: relative;
+        z-index: 1;
+        padding-top: 30px;
+        min-height: 100vh;
+      }
+      .navbar {
+        margin-bottom: 30px;
+        background-color: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(5px);
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .navbar .navbar-brand,
+      .navbar .nav-link {
+        color: #1f2937 !important;
+      }
+      .card {
+        margin-bottom: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border: none;
+        background-color: rgba(255, 255, 255, 0.95);
+      }
+      .card-header {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+      }
+      .welcome-banner {
+        background-color: rgba(255, 255, 255, 0.95);
+        padding: 20px;
+        margin-bottom: 30px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      .card-body {
+        padding: 25px;
+      }
+      .method-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: #007bff;
+      }
+      .chat-card .card-header {
+        background-color: #007bff;
+      }
+      .chat-card-body {
+        display: flex;
+        flex-direction: column;
+        height: 450px;
+        padding: 1.5rem !important;
+      }
+      .chat-messages {
+        flex-grow: 1;
+        overflow-y: auto;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .message {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+        max-width: 85%;
+      }
+      .message .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        flex-shrink: 0;
+      }
+      .message .text {
+        padding: 12px 18px;
+        border-radius: 18px;
+        line-height: 1.5;
+        word-wrap: break-word;
+      }
+      .message.bot {
+        align-self: flex-start;
+      }
+      .message.bot .avatar {
+        background-color: #6c757d;
+      }
+      .message.bot .text {
+        background-color: #e9ecef;
+        color: #343a40;
+        border-bottom-left-radius: 4px;
+      }
+      .message.user {
+        align-self: flex-end;
+        flex-direction: row-reverse;
+      }
+      .message.user .avatar {
+        background-color: #007bff;
+      }
+      .message.user .text {
+        background-color: #007bff;
+        color: white;
+        border-bottom-right-radius: 4px;
+      }
+      .chat-input-area {
+        display: flex;
+        padding-top: 1rem;
+        border-top: 1px solid #dee2e6;
+      }
+      #chat-input {
+        flex-grow: 1;
+        border: 1px solid #ced4da;
+        border-radius: 20px;
+        padding: 8px 15px;
+        font-size: 1rem;
+      }
+      #chat-send {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Video Background -->
+    <div class="video-background">
+      <video autoplay loop muted playsinline>
+        <source src="./static/images_videos/mri.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="content-wrapper">
+      <!-- Navigation Bar -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="./dashboard.html"><b>NeuroDetect</b></a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="./dashboard.html">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./form.html">ML Detection</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./upload.html">Image Detection</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link btn btn-danger btn-sm text-white"
+                  href="./index.html"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="welcome-banner">
+          <h2>Welcome, User!</h2>
+          <p>
+            Choose one of the Alzheimer's detection methods below to get
+            started.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">Feature-based Detection</div>
+              <div class="card-body text-center">
+                <div class="method-icon">
+                  <i class="fas fa-file-medical-alt"></i>
+                </div>
+                <h5 class="card-title">Traditional ML Analysis</h5>
+                <p class="card-text">
+                  Use patient data like age, cognitive scores, and brain
+                  measurements for prediction.
+                </p>
+                <a href="./form.html" class="btn btn-primary">Go to ML Form</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <div class="card-header">Image-based Detection</div>
+              <div class="card-body text-center">
+                <div class="method-icon"><i class="fas fa-brain"></i></div>
+                <h5 class="card-title">MRI Image Analysis</h5>
+                <p class="card-text">
+                  Upload brain MRI images for AI-powered Alzheimer's disease
+                  detection.
+                </p>
+                <a href="./upload.html" class="btn btn-primary"
+                  >Go to Image Upload</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-12">
+            <div class="card chat-card">
+              <div class="card-header">AI Assistant (NeuroBot)</div>
+              <div class="card-body chat-card-body">
+                <div class="chat-messages" id="chat-messages"></div>
+                <div class="chat-input-area">
+                  <input
+                    type="text"
+                    id="chat-input"
+                    class="form-control"
+                    placeholder="Ask about Alzheimer's..."
+                  />
+                  <button class="btn" id="chat-send">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const chatMessages = document.getElementById("chat-messages");
+      const chatInput = document.getElementById("chat-input");
+      const chatSendBtn = document.getElementById("chat-send");
+
+      const addMessage = (text, type, isHtml = false) => {
+        const messageWrapper = document.createElement("div");
+        messageWrapper.className = `message ${type}`;
+        const avatar = document.createElement("div");
+        avatar.className = "avatar";
+        avatar.innerHTML =
+          type === "bot"
+            ? '<i class="fas fa-robot"></i>'
+            : '<i class="fas fa-user"></i>';
+        const textElem = document.createElement("div");
+        textElem.className = "text";
+        if (isHtml) {
+          textElem.innerHTML = text;
+        } else {
+          textElem.textContent = text;
+        }
+        messageWrapper.appendChild(avatar);
+        messageWrapper.appendChild(textElem);
+        if (type === "user") {
+          messageWrapper.removeChild(avatar);
+          messageWrapper.appendChild(avatar);
+        }
+        chatMessages.appendChild(messageWrapper);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return textElem;
+      };
+
+      const sendMessage = () => {
+        const messageText = chatInput.value.trim();
+        if (messageText === "") return;
+        addMessage(messageText, "user");
+        chatInput.value = "";
+        const botThinkingElem = addMessage("<i>Thinking...</i>", "bot", true);
+        setTimeout(() => {
+          botThinkingElem.innerHTML = marked.parse(
+            "This is a static UI demo. The connection to the AI is disabled."
+          );
+        }, 1000);
+      };
+
+      document.addEventListener("DOMContentLoaded", () => {
+        addMessage(
+          "Hello! I'm NeuroBot. Ask me anything about Alzheimer's disease.",
+          "bot"
+        );
+      });
+
+      chatSendBtn.addEventListener("click", sendMessage);
+      chatInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+    </script>
+  </body>
+</html>

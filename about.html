@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - NeuroDetect</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .navbar {
+        margin-bottom: 30px;
+        background-color: #343a40;
+      }
+      .profile-card {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 5px solid #007bff;
+        margin-bottom: 1.5rem;
+      }
+      .profile-name {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #343a40;
+      }
+      .profile-affiliation {
+        font-size: 1.1rem;
+        color: #6c757d;
+      }
+      .contact-details {
+        list-style: none;
+        padding: 0;
+        margin-top: 1.5rem;
+      }
+      .contact-details li {
+        margin-bottom: 0.5rem;
+        color: #495057;
+      }
+      .contact-details i {
+        margin-right: 10px;
+        color: #007bff;
+        width: 20px;
+        text-align: center;
+      }
+      .section-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: #007bff;
+        border-bottom: 2px solid #dee2e6;
+        padding-bottom: 0.5rem;
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+      }
+      .bio-text p,
+      .ack-text p,
+      .research-focus p {
+        line-height: 1.8;
+        color: #495057;
+      }
+      .conference-list {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      .conference-list li {
+        background-color: #f8f9fa;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-bottom: 8px;
+        border-left: 3px solid #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="./dashboard.html"><b>NeuroDetect</b></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./form.html">ML Detection</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./upload.html">Image Detection</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="./about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link btn btn-danger btn-sm text-white"
+                href="./index.html"
+                >Logout</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="profile-card">
+        <div class="row">
+          <div class="col-lg-4 text-center">
+            <img
+              src="./static/images/p.jpg"
+              alt="Shehu Mohammed"
+              class="profile-img"
+            />
+            <h1 class="profile-name">Shehu Mohammed</h1>
+            <p class="profile-affiliation">
+              School of Computer Applications,<br />Lovely Professional
+              University, Phagwara, Punjab
+            </p>
+            <ul class="contact-details text-left">
+              <li>
+                <i class="fas fa-envelope"></i> mohammedshehumafara@gmail.com
+              </li>
+              <li><i class="fas fa-phone"></i> +234 803 202 2826</li>
+              <li><i class="fas fa-phone"></i> +91 7347555329</li>
+            </ul>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="bio-text">
+              <h2 class="section-title">Biography</h2>
+              <p>
+                Shehu Mohammed is a PhD research scholar in Computer
+                Applications at Lovely Professional University, India, under the
+                sponsorship of the TETFund initiative. He hails from Talata
+                Mafara in Zamfara State, Nigeria, and currently serves as a
+                senior Lecturer and immediate past Head of the Department of
+                Computer Science at Abdu Gusau Polytechnic, Talata Mafara. With
+                over 15 years of professional experience spanning academia and
+                the telecommunications industry, he has held multiple leadership
+                positions, including Deputy Director of MIS and Chairman of the
+                HODs Forum.
+              </p>
+              <p>
+                He holds a M.Sc. in Information Technology from the National
+                Open University of Nigeria, a Postgraduate Diploma from Bayero
+                University Kano, and a B.Sc. in Computer Science from Usmanu
+                Danfodiyo University Sokoto.
+              </p>
+            </div>
+
+            <div class="research-focus">
+              <h2 class="section-title">Research Focus</h2>
+              <p>
+                Mr. Mohammed’s doctoral research focuses on the early detection
+                of Alzheimer’s disease using multi-model machine learning
+                techniques, leveraging multimodal data such as neuroimaging,
+                clinical assessments, and behavioral biomarkers. His current
+                work explores hybrid models involving Gradient Boosting Machines
+                (GBM), Deep Neural Networks (DNNs), and Graph Neural Networks
+                (GNNs) to enhance predictive performance and interpretability.
+              </p>
+              <h3 class="h5 mt-4">Conference Presentations:</h3>
+              <ul class="conference-list">
+                <li>
+                  4th International Conference on Ubiquitous Computing and
+                  Intelligent Information Systems (ICUIS 2024)
+                </li>
+                <li>
+                  3rd International Conference on Intelligent and Innovative
+                  Technologies in Computing, Electrical and Electronics (IITCEE
+                  2024)
+                </li>
+                <li>
+                  International Conference on Digital Health Literacy among
+                  Elderly Populations (2024)
+                </li>
+                <li>
+                  International Conference on Recent Engineering and Science
+                  (ICRES), Turkey
+                </li>
+              </ul>
+            </div>
+
+            <div class="ack-text">
+              <h2 class="section-title">Acknowledgements</h2>
+              <p>
+                In Allah's name, the Most Merciful and Gracious. This project
+                would not have been possible without the support of the Tertiary
+                Education Trust Fund (Tetfund) Nigeria. Deepest gratitude is
+                expressed to Dr. Neha Malhotra and Dr. Amar Singh for their
+                invaluable guidance, motivation, and continuous support
+                throughout this research. Thanks are also extended to Arun Singh
+                and the School of Computer Applications at Lovely Professional
+                University for their assistance and resources.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

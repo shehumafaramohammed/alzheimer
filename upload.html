@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MRI Image Upload - Alzheimer's Detection</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+        padding-top: 20px;
+      }
+      .navbar {
+        margin-bottom: 30px;
+        background-color: #343a40;
+      }
+      .container {
+        max-width: 800px;
+      }
+      .card {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+      .card-header {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+      }
+      .upload-area {
+        border: 2px dashed #ccc;
+        border-radius: 5px;
+        padding: 30px;
+        text-align: center;
+        cursor: pointer;
+      }
+      .upload-icon {
+        font-size: 48px;
+        margin-bottom: 15px;
+        color: #007bff;
+      }
+      #preview-image {
+        max-width: 100%;
+        max-height: 300px;
+        margin: 15px auto;
+        display: none;
+      }
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="./dashboard.html"
+          >Alzheimer's Detection</a
+        >
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./form.html">ML Detection</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="./upload.html">Image Detection</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          MRI Image Upload for Alzheimer's Detection
+        </div>
+        <div class="card-body">
+          <p>Upload a brain MRI image (JPG, JPEG, or PNG format) to analyze.</p>
+          <form
+            method="POST"
+            action="./image_result.html"
+            enctype="multipart/form-data"
+            id="upload-form"
+          >
+            <div
+              class="upload-area"
+              id="drop-area"
+              onclick="document.getElementById('file').click()"
+            >
+              <div class="upload-icon"><i class="fas fa-upload"></i></div>
+              <h5>Drag & Drop or Click to Upload</h5>
+              <input
+                type="file"
+                name="file"
+                id="file"
+                style="display: none"
+                accept=".jpg, .jpeg, .png"
+                onchange="previewImage(this)"
+              />
+            </div>
+            <img id="preview-image" class="img-fluid" alt="Image Preview" />
+            <div class="text-center">
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg"
+                id="submit-btn"
+                disabled
+              >
+                Analyze Image
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="text-center mb-4">
+        <a href="./dashboard.html" class="btn btn-secondary"
+          >Back to Dashboard</a
+        >
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function previewImage(input) {
+        const preview = document.getElementById("preview-image");
+        const submitBtn = document.getElementById("submit-btn");
+        if (input.files && input.files[0]) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.style.display = "block";
+            submitBtn.disabled = false;
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+    </script>
+  </body>
+</html>

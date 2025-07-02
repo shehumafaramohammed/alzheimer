@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alzheimer's Detection System</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-image: url("./static/images_videos/rtg.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        padding-top: 50px;
+        height: 100vh;
+      }
+      .jumbotron {
+        background-color: rgba(233, 236, 239, 0.9);
+        margin-top: 30px;
+        padding: 2rem;
+      }
+      .card {
+        margin-bottom: 20px;
+        transition: transform 0.3s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      }
+      .card-header {
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+      }
+      .btn-block {
+        margin-top: 10px;
+      }
+      .method-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: #007bff;
+      }
+      .auth-buttons {
+        margin-top: 30px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-4">Alzheimer's Disease Detection</h1>
+        <p class="lead">
+          Advanced AI system for early diagnosis of Alzheimer's disease using
+          both traditional ML and deep learning approaches.
+        </p>
+        <hr class="my-4" />
+        <p>Please log in or register to access the detection tools.</p>
+
+        <div class="row">
+          <div class="col-md-6">
+            <a
+              class="btn btn-primary btn-lg btn-block"
+              href="./login.html"
+              role="button"
+              >Login</a
+            >
+          </div>
+          <div class="col-md-6">
+            <a
+              class="btn btn-success btn-lg btn-block"
+              href="./register.html"
+              role="button"
+              >Register</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">Feature-based Detection</div>
+            <div class="card-body text-center">
+              <div class="method-icon">📊</div>
+              <h5 class="card-title">ML Analysis</h5>
+              <p class="card-text">
+                Use patient attributes like age, clinical scores, and brain
+                measurements.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">Image-based Detection</div>
+            <div class="card-body text-center">
+              <div class="method-icon">🧠</div>
+              <h5 class="card-title">MRI Analysis</h5>
+              <p class="card-text">
+                Upload brain MRI images for deep learning-based detection.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">User Dashboard</div>
+            <div class="card-body text-center">
+              <div class="method-icon">📱</div>
+              <h5 class="card-title">Secure Access</h5>
+              <p class="card-text">
+                Manage your account and access detection tools from a
+                personalized dashboard.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+      <div
+        class="text-center p-3"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        © 2025 Alzheimer's Detection System
+      </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
